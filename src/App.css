@@ -1,0 +1,58 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  border: 2px solid #333;
+
+  --muted: #aab1cf;
+  --shadow: 0 10px 30px rgba(5,10,25,.35);
+  --radius: 14px;
+}
+
+.logo {
+  height: 2em;
+  padding: 0.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0em 0 2em #7667fbaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.lead{font-size: clamp(16px, 1.8vw, 18px); color:var(--muted); margin:20px 0px 10px 0px}
+.grid{display:grid; gap:18px; grid-template-columns: repeat(2, 1fr)}
+.grid1{display:grid; gap:18px; grid-template-columns: repeat(1, 1fr)}
+.feature{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius); padding:18px; box-shadow: var(--shadow);
+  
+}
