@@ -18,6 +18,7 @@ export default function Dashboard() {
       <div class="grid">
         <DisplayDB />
         <div class="grid1">
+          <Logout/>
           <AddEntry/>     
           <SelectEntryById />
           <DeleteEntryById />
@@ -26,6 +27,41 @@ export default function Dashboard() {
     </>
   )
 }
+
+function Logout() {
+
+  async function handleLogout() {
+  
+    try {
+
+      const res = await fetch(`/api/v1/logout`, {
+        method: "POST",
+        credentials: 'include',
+      });
+
+      if (res.ok) {
+        localStorage.removeItem('userRole');
+        console.log("Logged out successfully");
+        window.location.href = "/login";
+      }
+      else {
+        const text = await res.text();
+        console.error("Logout failed:", res.status, text);
+      }
+    }
+    catch (error) {
+      console.error("Server error during logout:", error);
+    }
+  }
+
+  return (
+    <div class="feature">
+      <h3 class="lead">Logout</h3>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  )
+}
+
 
 function DisplayDB() {
   const [show,setShow] = useState(0);
