@@ -27,8 +27,10 @@ export default function Login() {
             });
 
             if (res.ok) { 
-                //localStorage.setItem('userRole', res.role);
+                const data = await res.json();
+                localStorage.setItem('userRole', data.role);
                 navigate("/dashboard"); 
+                console.log("The role is: " + data.role);
             } else {
                     console.error("Login failed:", res.status);
                     setErrorMessage("Login failed");

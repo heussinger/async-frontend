@@ -5,6 +5,9 @@ import './App.css'
 
 export default function Dashboard() {
   
+  const userRole = localStorage.getItem('userRole');
+  const isAdmin = userRole === 'ROLE_ADMIN';
+
   return (
     <>
       <h1><a href="https://vite.dev" target="_blank">
@@ -19,9 +22,9 @@ export default function Dashboard() {
         <DisplayDB />
         <div class="grid1">
           <Logout/>
-          <AddEntry/>     
+          {isAdmin && <AddEntry/>}
           <SelectEntryById />
-          <DeleteEntryById />
+          {isAdmin && <DeleteEntryById />}
         </div>
       </div>
     </>
@@ -193,21 +196,18 @@ function AddEntry() {
     
     setName("");
     setSkills("");
-    //const userRole = localStorage.getItem('userRole');
-    //const isAdmin = userRole === 'ROLE_ADMIN' ? 1 : 0;
   }
 
   return (
-    <div class="feature">
-        <h3 class="lead">Add an entry to the database</h3>
-        {/* <p>You are logged in as: <strong>{userRole}</strong></p> */}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name"> Name: </label>
-        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)}/> 
-        <label htmlFor="skills"> Skills: </label>
-        <input type="text" id="skills" value={skills} onChange={(e) => setSkills(e.target.value)}/>
-        <button type="submit">Submit</button>
-      </form>
+      <div class="feature">
+          <h3 class="lead">Add an entry to the database</h3>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name"> Name: </label>
+            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)}/> 
+            <label htmlFor="skills"> Skills: </label>
+            <input type="text" id="skills" value={skills} onChange={(e) => setSkills(e.target.value)}/>
+            <button type="submit">Submit</button>
+          </form>
     </div>
    
   )
