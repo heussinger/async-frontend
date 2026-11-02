@@ -24,4 +24,4 @@ jobs:
       with:
         push: true
         platforms: linux/amd64
-        tags: ${{ vars.DOCKER_NAME }}/symmetrical-engine:${{ env.time }}
+        tags: ${{ vars.DOCKER_NAME }}/async-frontend:${{ env.time }}
